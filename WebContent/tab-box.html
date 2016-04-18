@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>리스트를 이용한 메뉴 만들기</title>
+<style type="text/css">
+*{ margin:0; padding:0 }
+body{ font-family: '맑은 고딕' 돋움; font-size:0.75em; color:#333 }
+
+.tab-box{	
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:520px;
+}
+
+.tab-box ul{
+	list-style-type: none;
+	height:27px;
+}
+
+.tab-box ul li{
+	float:right;
+	width:100px;
+	height:22px;
+	border:1px solid #999;
+	background-color:#ccc;
+	text-align:center;
+	padding-top:3px;
+	margin-right:2px;
+	
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	cursor:pointer;
+}
+
+#tab-view{
+	border:1px solid #999;
+	margin-top:-1px;
+	text-align:center;
+	line-height:200px;
+	width:516;
+}
+.tab-box ul li.selected{
+	background-color: #FFCC66;
+}
+</style>
+<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+var TabBox = {
+		init:function(){
+			$("li").click(this.onTabClicked);	// this == tab-box
+		},
+		onTabClicked:function(event){
+			console.log(event);
+	
+			// unselect
+				$("[class='selected']").removeClass("selected");
+			// select
+				var $li = $(this);		// this == event.target
+				$li.addClass("selected");
+			// update tab-view
+				$(".tab-box div").html("<strong>탭"+($li.index()+1)+"뷰의 내용입니다.</strong>");
+			}
+	};
+	$(function(){
+		TabBox.init();
+	});
+
+</script>
+</head>
+<body>
+<div class="tab-box">
+	<ul>
+        <li>메뉴 1</li>
+        <li>메뉴 2</li>
+        <li>메뉴 3</li>
+        <li>메뉴 4</li>
+        <li>메뉴 5</li>
+    </ul>
+    <div>
+    	탭뷰입니다.
+    </div>
+</div>    
+</body>
+</html>

@@ -5,13 +5,44 @@
 <script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
 <script type="text/javascript">
 	$( function() {
-		/* 코드를 완성하세요 */
+		setTimeout(function(){
+/* 			var $anchor = $("h1 a");
+			$anchor.attr("href","http://www.estsoft.com");
+			$anchor.attr("title","우리회사 홈페이지"); */
+			
+			// 함수 체인
+		/* 	$("h1 a").
+			attr("href","http://www.estsoft.com").
+			attr("title","우리회사 홈페이지"); */
+			
+			// 객체를 사용한 attr API 함수 호출
+			$("h1 a").
+			attr({
+				"href":"http://www.estsoft.com",
+				"title":"우리회사 홈페이지",
+				"target":"_blank"
+			});
+			
+			$("h1").css({
+				"fontSize":"1.2em",
+				"fontFamily":"맑은 고딕"
+			});
+			
+			$("a:link, a:visited, a:active, a:hover").css({
+				"color":"#333",
+				"textDecoration":"none"
+			});
+			
+			console.log($("h1").css("fontSize"));
+		},2000);
+		
+		// 여러 함수 부를 경우엔 함수체인 부르는게 좋다.
 } );  
 </script>
 </head>
 <body>
 
-<h1><a href="http://www.smu.ac.kr" target="_blnk" title="우리학교 홈페이지 가기">홈페이지 가기</a></h1>
+<h1><a href="http://www.smu.ac.kr" title="우리학교 홈페이지 가기">홈페이지 가기</a></h1>
 
 </body>
 </html>

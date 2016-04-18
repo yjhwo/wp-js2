@@ -20,9 +20,34 @@ $(function(){
 
 	$("button").click(function(){
 		// 랜덤 변수 
-		var result = Math.floor( Math.random() * (images.length-1)  ) + 1;
+		//var result = Math.floor( Math.random() * (images.length-1)  ) + 1;
+		//console.log(Math.random());		// 0 ~ 0.999999999999999999
+		//console.log(Math.random()*10);	// 0.00000~ 9.9999999999999
+		//console.log(Math.floor(Math.random() *10));	// 0~9
+		
+		var index = Math.floor(Math.random()*images.length);	// 0~7
+		console.log(index);
+		var imageData = images[index].split(":");
+		
+		$("img").attr({
+			"src":"images/"+imageData[1],
+			"alt":imageData[0]
+		});
 	});
 	
+	$("img").dblclick(function(){
+		var $img = $(this);
+		alert($img.attr("alt"));
+	}).
+	mousedown(function(){
+		var index = Math.floor(Math.random()*images.length);	// 0~7
+		console.log(index);
+		var imageData = images[index].split(":");
+		$("img").attr({
+			"src":"images/"+imageData[1],
+			"alt":imageData[0]
+		});
+	});
 });
 </script>
 </head>
